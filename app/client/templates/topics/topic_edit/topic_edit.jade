@@ -1,0 +1,5 @@
+template(name="TopicEdit")
+  h1 Edit {{name}}
+  +quickForm(collection="Topics" doc=this id="topicEditForm" type="update" omitFields="authorId,created,updated" buttonContent="Update")
+  +quickRemoveButton(collection="Topics" _id=this._id beforeRemove=beforeRemove class="btn red lighten-2 right")
+    i.fa.fa-trash-o

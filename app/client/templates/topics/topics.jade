@@ -1,2 +1,5 @@
 template(name='Topics')
-  | Find me in app/client/templates/topics/topics
+  +linkTo route='topicNew' class="btn right"
+    i.left.mdi-content-create
+    | New Topic
+  +tabular(table=TabularTables.TopicsList class="table table-striped table-bordered table-condensed")

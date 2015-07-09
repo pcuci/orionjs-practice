@@ -5,6 +5,23 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
+coffeescript
+fourseven:scss
 iron:router
+materialize:materialize
+gildaspk:autoform-modals-materialize
+pfafman:materialize-modal
+meteorblackbelt:autoform-percentage
+
+natestrauser:font-awesome
+
+aldeed:delete-button
+
+momentjs:moment
+
+aldeed:autoform
+aldeed:collection2
+accounts-ui
+accounts-password
+mquandalle:jade
+aldeed:tabular

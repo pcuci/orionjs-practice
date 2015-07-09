@@ -1,19 +1,42 @@
 @Topics = new Mongo.Collection('topics')
 
+Topics.attachSchema new SimpleSchema(
+  name:
+    type: String
+    label: "Name"
+  created:
+    type: Date
+    label: "Created At"
+    autoValue: ->
+      if @isInsert
+        new Date
+      else if @isUpsert
+        $setOnInsert: new Date
+      else
+        @unset()
+  updated:
+    type: Date
+    label: "Updated At"
+    autoValue: ->
+      new Date()
+  authorId:
+    type: String
+    regEx: SimpleSchema.RegEx.Id
+)
 
 if Meteor.isServer
   Topics.allow
     insert: (userId, doc) ->
-      false
+      true
     update: (userId, doc, fieldNames, modifier) ->
-      false
+      true
     remove: (userId, doc) ->
-      false
+      true
 
   Topics.deny
     insert: (userId, doc) ->
-      true
+      false
     update: (userId, doc, fieldNames, modifier) ->
-      true
+      false
     remove: (userId, doc) ->
-      true
+      false
