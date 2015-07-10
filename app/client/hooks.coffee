@@ -59,6 +59,13 @@ topicHook =
     console.log("in topicHook formToDoc")
     console.log("in topicHook formToDoc, doc:")
     console.log(doc)
+    console.log("in topicHook formToDoc ------------------------- STARS (before): " + doc.stars)
+    console.log("typeof doc.stars: " + typeof doc.stars)
+    doc.stars = if doc.stars is "0"
+      "noStars"
+    else if doc.stars is "1"
+      "moreStars"
+    console.log("in topicHook formToDoc ------------------------- STARS (after): " + doc.stars)
     doc.tags = doc.tags.split(",") if typeof doc.tags is "string"
     doc.created ?= new Date()
     doc.updated = new Date()
@@ -66,7 +73,7 @@ topicHook =
     doc
 
   formToModifier: (modifier) ->
-    console.log("in formToModifier, modifier: ")
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> in formToModifier, modifier: ")
     console.log(modifier)
     modifier
 
@@ -78,6 +85,13 @@ topicHook =
     console.log(doc)
     console.log("in topicHook docToForm, ss:")
     console.log(ss)
+    console.log("in topicHook docToForm ------------------------- STARS (before): " + doc.stars)
+    console.log("typeof doc.stars: " + typeof doc.stars)
+    doc.stars = if doc.stars is "noStars"
+      "0"
+    else if doc.stars is "moreStars"
+      "1"
+    console.log("in topicHook docToForm ------------------------- STARS (after): " + doc.stars)
     doc.tags = doc.tags.join(", ") if _.isArray(doc.tags)
     doc.created ?= new Date()
     doc.updated = new Date()
