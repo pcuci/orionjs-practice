@@ -14,7 +14,6 @@ topicHook =
       console.log(doc)
       @.result(doc)
 
-
   # Then return it or pass it to this.result()
   #return doc; (synchronous)
   #return false; (synchronous, cancel)
@@ -60,6 +59,7 @@ topicHook =
     console.log("in topicHook formToDoc")
     console.log("in topicHook formToDoc, doc:")
     console.log(doc)
+    doc.tags = doc.tags.split(",") if typeof doc.tags is "string"
     doc.created ?= new Date()
     doc.updated = new Date()
     doc.authorId = Meteor.userId()
@@ -78,6 +78,7 @@ topicHook =
     console.log(doc)
     console.log("in topicHook docToForm, ss:")
     console.log(ss)
+    doc.tags = doc.tags.join(", ") if _.isArray(doc.tags)
     doc.created ?= new Date()
     doc.updated = new Date()
     doc.authorId ?= Meteor.userId()

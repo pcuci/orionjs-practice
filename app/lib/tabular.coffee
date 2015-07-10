@@ -12,6 +12,9 @@ TabularTables.TopicsList = new Tabular.Table(
     data: "stars"
     title: "Stars"
   ,
+    data: "tags"
+    title: "Tags"
+  ,
     data: "created"
     title: "Created"
     render: (val, type, doc) ->

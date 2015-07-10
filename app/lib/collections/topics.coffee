@@ -16,8 +16,13 @@ Topics.attachSchema new SimpleSchema(
     label: "Stars"
     autoform:
       type: "range"
-      min: 1
-      max: 5
+      min: 0
+      max: 1
+  tags:
+    type: [String]
+    label: "Tags"
+    autoform:
+      type: "text"
   created:
     type: Date
     label: "Created At"
