@@ -4,6 +4,20 @@ Topics.attachSchema new SimpleSchema(
   name:
     type: String
     label: "Name"
+  importance:
+    type: Number
+    label: "Importance"
+    autoform:
+      type: "range"
+      min: 0
+      max: 100
+  stars:
+    type: String
+    label: "Stars"
+    autoform:
+      type: "range"
+      min: 1
+      max: 5
   created:
     type: Date
     label: "Created At"
