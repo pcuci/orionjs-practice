@@ -1,5 +1,7 @@
 @Topics = new Mongo.Collection('topics')
 
+@radioOptions = ["opt1", "opt2", "opt3"]
+
 Topics.attachSchema new SimpleSchema(
   name:
     type: String
@@ -23,6 +25,31 @@ Topics.attachSchema new SimpleSchema(
     label: "Tags"
     autoform:
       type: "text"
+  feelingGood:
+    type: String
+    label: "Good"
+    allowedValues: radioOptions
+    optional: true
+    autoform:
+      type: "select-uncheckable-radio"
+      options: ->
+        _.map radioOptions, (option) ->
+          {
+            label: option
+            value: option
+          }
+  feelingAnxious:
+    type: String
+    label: "Anxious"
+    allowedValues: radioOptions
+    autoform:
+      type: "select-radio"
+      options: ->
+        _.map radioOptions, (option) ->
+          {
+            label: option
+            value: option
+          }
   created:
     type: Date
     label: "Created At"

@@ -15,13 +15,15 @@ accounts-password
 
 aldeed:autoform
 aldeed:collection2
-materialize:materialize
+twbs:bootstrap
+#materialize:materialize
 
 aldeed:tabular
 #nicolaslopezj:tabular-materialize
 
-gildaspk:autoform-materialize
+#gildaspk:autoform-materialize
 
 natestrauser:font-awesome
 aldeed:delete-button
 momentjs:moment
+pcuci:autoform-select-uncheckable-radio

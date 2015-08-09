@@ -9,6 +9,12 @@ TabularTables.TopicsList = new Tabular.Table(
     data: "importance"
     title: "Importance"
   ,
+    data: "feelingGood"
+    title: "Good"
+  ,
+    data: "feelingAnxious"
+    title: "Anxious"
+  ,
     data: "stars"
     title: "Stars"
   ,

@@ -1,6 +1,8 @@
 template(name="TopicEdit")
   h1 Edit {{name}}
   +autoForm(collection="Topics" doc=this id="topicEditForm" type="update" omitFields="authorId,created,updated")
+    +afQuickField(name='feelingGood')
+    +afQuickField(name='feelingAnxious')
     +afQuickField(name='name')
     +afQuickField(name='importance')
     +afQuickField(name='stars')
