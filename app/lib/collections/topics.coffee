@@ -1,6 +1,6 @@
 @Topics = new Mongo.Collection('topics')
 
-@radioOptions = ["opt1", "opt2", "opt3"]
+@radioOptions = ["opt1", "opt2", "opt3", "opt4"]
 
 Topics.attachSchema new SimpleSchema(
   name:
