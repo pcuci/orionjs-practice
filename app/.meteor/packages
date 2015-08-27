@@ -16,7 +16,7 @@ accounts-password
 aldeed:autoform
 aldeed:collection2
 #twbs:bootstrap
-materialize:materialize
+poetic:materialize-scss
 
 #aldeed:tabular
 nicolaslopezj:tabular-materialize

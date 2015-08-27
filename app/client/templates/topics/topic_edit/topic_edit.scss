@@ -1,8 +1,6 @@
 /*****************************************************************************/
 /* TopicEdit: Style */
 /*****************************************************************************/
-.topic-edit {
-}
 
 $radio-1-background-color: #fce4ec;
 $radio-1-color: black;
@@ -59,7 +57,8 @@ $question-active-background-color: #00cace;
 $nextButtonBorder: #7b90ae;
 $nextButtonColor: #7b90ae;
 
-$option-background-color: #f5c94e;
+$option-background-color: #F1C40F;
+$option-inactive-background-color: #E9EEEF;
 
 @mixin user-select($user-select) {
   -webkit-touch-callout: $user-select;
@@ -94,13 +93,6 @@ $option-background-color: #f5c94e;
   border-top-left-radius: $top-left-radius;
 }
 
-@mixin transition-all() {
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-
 @mixin transition-delay($delay) {
   -webkit-transition-duration: $delay;
   -moz-transition-duration: $delay;
@@ -116,7 +108,40 @@ $option-background-color: #f5c94e;
   display: flex;
 }
 
-$option-highlight: #eceff1;
+.chat-tail-defaults {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  transform: scale(1);
+  margin: 20px 0 0 0;
+  border-radius: 0;
+  border: none;
+  z-index: -1;
+}
+
+.chat-tail-before {
+  @extend .chat-tail-defaults;
+  width: 25px;
+  height: 27px;
+  background: $option-background-color;
+  @include bottom-right-radius(80px 50px);
+}
+
+.chat-tail-after {
+  @extend .chat-tail-defaults;
+  width: 11px;
+  height: 27px;
+  background: white;
+  z-index: 0;
+  @include bottom-right-radius(40px 50px);
+}
+
+$option-highlight: $option-background-color;
+$option-inactive-highlight: $option-background-color;
 
 .af-uncheck-radio-group {
   display: flex;
@@ -163,11 +188,11 @@ $option-highlight: #eceff1;
       left: 0px;
       align-items: center;
       padding: 20px 15px;
-      color: black;
-      border: 2px solid #7b90ae;
+      background-color: $option-inactive-background-color;
+      border: 2px solid $option-inactive-background-color;
       border-radius: 20px;
       &:hover {
-        background-color: $option-highlight;
+        border-color: $option-inactive-highlight;
       }
     }
   }
@@ -177,7 +202,6 @@ $option-highlight: #eceff1;
     p:last-child {
       flex: 1 0 0;
       margin: 0;
-
       // Hide radio button, will be used later as chat tail for first response
       // Hide radio button, will be used later as chat tail for first response
       [type="radio"]:not(:checked) + label:before,
@@ -189,6 +213,7 @@ $option-highlight: #eceff1;
       [type="radio"]:not(:checked) + label,
       [type="radio"]:checked + label {
         @include flex();
+
         position: relative;
         top: 0px;
         left: 0px;
@@ -213,37 +238,19 @@ $option-highlight: #eceff1;
         position: static;
         align-items: center;
         padding: 20px 15px;
-        color: black;
-        border: 2px solid #7b90ae;
         border-radius: 20px;
         border: 2px solid $option-background-color;
         background-color: $option-background-color;
         &:hover {
-          background-color: #FFC94E;
+          background-color: $option-highlight;
         }
-        &:before {
-          content: "";
-          margin: 20px 0;
+        &::before {
           display: block;
-          width: 25px;
-          height: 27px;
-          border-radius: 0;
-          background: $option-background-color;
-          z-index: -1;
-          @include transition-all();
-          @include bottom-right-radius(80px 50px);
+          @extend .chat-tail-before;
         }
-        &:after {
-          content: "";
-          margin: 10px 0;
+        &::after {
           display: block;
-          width: 10px;
-          height: 38px;
-          background: white;
-          border-radius: 0;
-          border: none;
-          transition: none;
-          @include bottom-right-radius(40px 50px);
+          @extend .chat-tail-after;
         }
       }
     }
@@ -260,40 +267,65 @@ $option-highlight: #eceff1;
           position: static;
           align-items: center;
           padding: 20px 15px;
-          color: red;
-          border: 2px solid #7b90ae;
           border-radius: 0;
           @include top-left-radius(20px);
           @include bottom-left-radius(20px);
           border: 2px solid $option-background-color;
           background-color: $option-background-color;
           &:hover {
-            background-color: #FFC94E;
+            background-color: $option-highlight;
           }
-          &:before {
-            content: "";
-            margin: 20px 0;
+          &::before {
             display: block;
-            width: 25px;
-            height: 27px;
-            border-radius: 0;
-            background: $option-background-color;
-            z-index: -1;
-            @include transition-all();
-            @include bottom-right-radius(80px 50px);
+            @extend .chat-tail-before;
           }
-          &:after {
-            content: "";
-            margin: 10px 0;
+          &::after {
             display: block;
-            width: 10px;
-            height: 38px;
-            background: white;
-            border-radius: 0;
-            border: none;
-            transition: none;
-            @include bottom-right-radius(40px 50px);
+            @extend .chat-tail-after;
           }
+        }
+      }
+      &:not(:first-child) {
+        [type="radio"]:not(:checked) + label:before,
+        [type="radio"]:checked + label:after
+        {
+          display: none;
+        }
+        [type="radio"]:not(:checked) + label {
+          @include flex();
+          text-indent: 0;
+          position: static;
+          align-items: center;
+          padding: 20px 15px;
+          border-radius: 0;
+          border: 2px solid $option-background-color;
+          background-color: $option-background-color;
+          &:hover {
+            background-color: $option-highlight;
+          }
+        }
+      }
+    }
+    p:not(:first-child) {
+      [type="radio"]:not(:checked) + label:before {
+      }
+      [type="radio"]:checked + label:after
+      {
+        display: none;
+      }
+      [type="radio"]:checked + label {
+        @include flex();
+        text-indent: 0;
+        position: static;
+        align-items: center;
+        padding: 20px 15px;
+        border-radius: 0;
+        @include top-right-radius(20px);
+        @include bottom-right-radius(20px);
+        border: 2px solid $option-background-color;
+        background-color: $option-background-color;
+        &:hover {
+          background-color: $option-highlight;
         }
       }
     }

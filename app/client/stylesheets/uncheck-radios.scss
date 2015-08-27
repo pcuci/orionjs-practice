@@ -1,0 +1,58 @@
+/***************
+  Radio Buttons
+***************/
+
+$radio-empty-color: #F1C40F;
+
+.af-uncheck-radio-group {
+  /* Remove default Radio Buttons */
+  [type="radio"]:not(:checked),
+  [type="radio"]:checked {
+    position: absolute;
+    left: -9999px;
+    visibility: hidden;
+  }
+
+  [type="radio"]:not(:checked) + label,
+  [type="radio"]:checked + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 1rem;
+    @include transition(.28s ease);
+
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+  }
+
+  [type="radio"] + label:before,
+  [type="radio"] + label:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 4px;
+    width: 16px;
+    height: 16px;
+    z-index: 0;
+    @include transition(none);
+  }
+
+  /* Unchecked styles */
+  [type="radio"]:not(:checked) + label:before {
+    border-radius: 50%;
+    border: 3px solid $radio-empty-color;
+  }
+  [type="radio"]:not(:checked) + label:after {
+    border-radius: 50%;
+    border: 3px solid $radio-empty-color;
+    z-index: -1;
+
+    @include transform(scale(0));
+  }
+}
