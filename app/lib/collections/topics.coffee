@@ -1,6 +1,18 @@
 @Topics = new Mongo.Collection('topics')
 
-@radioOptions = ["opt1", "opt2", "opt3", "opt4"]
+@radioOptions = [
+  value: "opt1"
+  label: "opt1 whoaos\ndt1 whoaos dt1 whoaos dfa"
+,
+  value: "opt2"
+  label: "opt2"
+,
+  value: "opt3"
+  label: "opt3fgfdsgsonelogword\nand sf ad"
+,
+  value: "opt4"
+  label: "opt4sad\ndfa gad df ad mand sf\nad mand sf ad small"
+]
 
 Topics.attachSchema new SimpleSchema(
   name:
@@ -35,8 +47,8 @@ Topics.attachSchema new SimpleSchema(
       options: ->
         _.map radioOptions, (option) ->
           {
-            label: option
-            value: option
+            label: option.label
+            value: option.value
           }
   feelingAnxious:
     type: String
@@ -47,8 +59,8 @@ Topics.attachSchema new SimpleSchema(
       options: ->
         _.map radioOptions, (option) ->
           {
-            label: option
-            value: option
+            label: option.value
+            value: option.value
           }
   created:
     type: Date

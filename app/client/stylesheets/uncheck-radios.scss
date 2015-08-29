@@ -5,6 +5,10 @@
 $radio-empty-color: #F1C40F;
 
 .af-uncheck-radio-group {
+  display: flex;
+  p {
+    flex: 1 0 0;
+  }
   /* Remove default Radio Buttons */
   [type="radio"]:not(:checked),
   [type="radio"]:checked {
@@ -15,19 +19,33 @@ $radio-empty-color: #F1C40F;
 
   [type="radio"]:not(:checked) + label,
   [type="radio"]:checked + label {
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
     display: inline-block;
-    height: 25px;
-    line-height: 25px;
-    font-size: 1rem;
-    @include transition(.28s ease);
+    padding: 6px;
+    height: 45px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    vertical-align: middle;
+    padding-left: 20px;
+    cursor: pointer;
+    line-height: 9px;
+    font-size: 0.7rem;
+    overflow: visible;
+    white-space: pre;
+    @include transition(none);
 
     -webkit-user-select: none; /* webkit (safari, chrome) browsers */
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */
     -ms-user-select: none; /* IE10+ */
+    &::first-line {
+      font-weight: bold;
+      line-height: 15px;
+      font-size: 1rem;
+    }
   }
 
   [type="radio"] + label:before,
@@ -52,7 +70,6 @@ $radio-empty-color: #F1C40F;
     border-radius: 50%;
     border: 3px solid $radio-empty-color;
     z-index: -1;
-
     @include transform(scale(0));
   }
 }

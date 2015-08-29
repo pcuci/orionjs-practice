@@ -10,8 +10,6 @@ Router.onBeforeAction (->
     @next()
 ),
   only: [
-    "topicNew"
-    "topicEdit"
   ]
 
 Router.route '/',

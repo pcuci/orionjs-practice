@@ -100,24 +100,16 @@ $option-inactive-background-color: #E9EEEF;
   transition-duration: $delay;
 }
 
-@mixin flex() {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-}
-
 .chat-tail-defaults {
   content: "";
   display: block;
   position: absolute;
-  top: 0;
+  top: 15px;
   right: 0;
-  left: 0;
+  left: -12px;
   bottom: 0;
   transform: scale(1);
-  margin: 20px 0 0 0;
+  margin: 0;
   border-radius: 0;
   border: none;
   z-index: -1;
@@ -133,148 +125,86 @@ $option-inactive-background-color: #E9EEEF;
 
 .chat-tail-after {
   @extend .chat-tail-defaults;
-  width: 11px;
+  width: 10px;
   height: 27px;
   background: white;
   z-index: 0;
   @include bottom-right-radius(40px 50px);
 }
 
+.hide-text {
+  text-indent: -9999px;
+  white-space: nowrap;
+}
+
 $option-highlight: $option-background-color;
 $option-inactive-highlight: $option-background-color;
+$answer-total-width: 80%;
+
+.active-option {
+  border: 2px solid $option-background-color;
+  background-color: $option-background-color;
+}
 
 .af-uncheck-radio-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0;
-  margin: 0;
+  // Style unchecked radios first, i.e.: element is not .active
 
-  &+label {
+  width: $answer-total-width;
+
+  // Hide radio group label
+  & + label {
     display: none;
   }
 
-  p,
-  p:last-child {
-    flex: 1 0 0;
-    margin: 0;
-
-    // Hide radio button, will be used later as chat tail for first response
-    [type="radio"]:not(:checked) + label:before,
-    [type="radio"]:checked + label:after {
-      margin-left: 50%;
-      top: 10px;
-    }
-
-    [type="radio"]:not(:checked) + label,
-    [type="radio"]:checked + label {
-      @include flex();
-      display: none;
-    }
-  }
-
-  p:first-child {
-    // Hide radio button, will be used later as chat tail for first response
+  // Hide all options except the first
+  p {
+    // Hide materialize radio button (:before/:after implementation)
+    // Later used as chat tail for first option
     [type="radio"]:not(:checked) + label:before,
     [type="radio"]:checked + label:after
     {
       display: none;
     }
-    [type="radio"]:not(:checked) + label {
-      @include flex();
-      text-indent: 0;
-      position: relative;
-      top: 0px;
-      left: 0px;
-      align-items: center;
-      padding: 20px 15px;
-      background-color: $option-inactive-background-color;
-      border: 2px solid $option-inactive-background-color;
-      border-radius: 20px;
-      &:hover {
-        border-color: $option-inactive-highlight;
+    // Hide options that are not checked
+    &:not(:first-child) {
+      [type="radio"]:not(:checked) + label {
+        display: none;
+      }
+    }
+
+    // Style first option as a grey box
+    &:first-child {
+      [type="radio"]:not(:checked) + label {
+        border-radius: 20px;
+        background-color: $option-inactive-background-color;
+        border: 2px solid $option-inactive-background-color;
+        &:hover {
+          border-color: $option-inactive-highlight;
+        }
       }
     }
   }
 
   &.active {
-    p,
-    p:last-child {
-      flex: 1 0 0;
-      margin: 0;
-      // Hide radio button, will be used later as chat tail for first response
-      // Hide radio button, will be used later as chat tail for first response
-      [type="radio"]:not(:checked) + label:before,
-      [type="radio"]:checked + label:after {
+    p {
+      // Show bubbles to indicate next available options
+      [type="radio"]:not(:checked) + label:before {
+        display: block;
         margin-left: 50%;
         top: 10px;
       }
 
+      // Shared active styling
       [type="radio"]:not(:checked) + label,
       [type="radio"]:checked + label {
-        @include flex();
-
-        position: relative;
-        top: 0px;
-        left: 0px;
-        align-items: center;
-        padding: 20px 15px;
-
+        display: inline-block;
         color: white;
-        white-space: nowrap;
-        overflow: hidden;
       }
-    }
 
-    p:first-child {
-      [type="radio"]:not(:checked) + label:before,
-      [type="radio"]:checked + label:after
-      {
-        display: none;
-      }
-      [type="radio"]:checked + label {
-        @include flex();
-        text-indent: 0;
-        position: static;
-        align-items: center;
-        padding: 20px 15px;
-        border-radius: 20px;
-        border: 2px solid $option-background-color;
-        background-color: $option-background-color;
-        &:hover {
-          background-color: $option-highlight;
-        }
-        &::before {
-          display: block;
-          @extend .chat-tail-before;
-        }
-        &::after {
-          display: block;
-          @extend .chat-tail-after;
-        }
-      }
-    }
-    p.higherSelected {
       &:first-child {
-        [type="radio"]:not(:checked) + label:before,
-        [type="radio"]:checked + label:after
-        {
-          display: none;
-        }
-        [type="radio"]:not(:checked) + label {
-          @include flex();
-          text-indent: 0;
-          position: static;
-          align-items: center;
-          padding: 20px 15px;
-          border-radius: 0;
-          @include top-left-radius(20px);
-          @include bottom-left-radius(20px);
-          border: 2px solid $option-background-color;
-          background-color: $option-background-color;
-          &:hover {
-            background-color: $option-highlight;
-          }
+        [type="radio"]:checked + label {
+          border-radius: 20px;
+          @extend .active-option;
           &::before {
             display: block;
             @extend .chat-tail-before;
@@ -285,47 +215,47 @@ $option-inactive-highlight: $option-background-color;
           }
         }
       }
+      // Style with top/bottom-right rounded corners if checked
       &:not(:first-child) {
-        [type="radio"]:not(:checked) + label:before,
-        [type="radio"]:checked + label:after
-        {
-          display: none;
-        }
-        [type="radio"]:not(:checked) + label {
-          @include flex();
-          text-indent: 0;
-          position: static;
-          align-items: center;
-          padding: 20px 15px;
+        [type="radio"]:checked + label {
+          direction: rtl;
+          text-align: left;
           border-radius: 0;
-          border: 2px solid $option-background-color;
-          background-color: $option-background-color;
-          &:hover {
-            background-color: $option-highlight;
+          @include top-right-radius(20px);
+          @include bottom-right-radius(20px);
+          @extend .active-option;
+        }
+      }
+
+      // Everything to the left of checked option has this class
+      &.higherSelected {
+        // Hide text of labels to the left of checked option
+        label {
+          @extend .hide-text;
+        }
+        // First option is active, with top/bottom-left rounded corners
+        &:first-child {
+          [type="radio"]:not(:checked) + label {
+            border-radius: 0;
+            @include top-left-radius(20px);
+            @include bottom-left-radius(20px);
+            @extend .active-option;
+            &::before {
+              display: block;
+              @extend .chat-tail-before;
+            }
+            &::after {
+              display: block;
+              @extend .chat-tail-after;
+            }
           }
         }
-      }
-    }
-    p:not(:first-child) {
-      [type="radio"]:not(:checked) + label:before {
-      }
-      [type="radio"]:checked + label:after
-      {
-        display: none;
-      }
-      [type="radio"]:checked + label {
-        @include flex();
-        text-indent: 0;
-        position: static;
-        align-items: center;
-        padding: 20px 15px;
-        border-radius: 0;
-        @include top-right-radius(20px);
-        @include bottom-right-radius(20px);
-        border: 2px solid $option-background-color;
-        background-color: $option-background-color;
-        &:hover {
-          background-color: $option-highlight;
+        // All remaining middle options styled as squares
+        &:not(:first-child) {
+          [type="radio"]:not(:checked) + label {
+            border-radius: 0;
+            @extend .active-option;
+          }
         }
       }
     }
