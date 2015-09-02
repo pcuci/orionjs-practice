@@ -58,7 +58,7 @@ nicolaslopezj:tabular-materialize@1.2.1
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
 ordered-dict@1.0.3
-pcuci:autoform-select-uncheckable-radio-aminy@0.0.4
+pcuci:autoform-select-uncheckable-radio-aminy@0.0.5
 poetic:materialize-scss@1.2.6
 random@1.0.3
 reactive-dict@1.1.0

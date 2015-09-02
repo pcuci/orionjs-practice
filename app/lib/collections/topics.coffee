@@ -40,7 +40,7 @@ Topics.attachSchema new SimpleSchema(
   feelingGood:
     type: String
     label: "Good"
-    allowedValues: radioOptions
+    allowedValues: _.pluck(radioOptions, 'value')
     optional: true
     autoform:
       type: "select-uncheckable-radio"
@@ -53,7 +53,7 @@ Topics.attachSchema new SimpleSchema(
   feelingAnxious:
     type: String
     label: "Anxious"
-    allowedValues: radioOptions
+    allowedValues: _.pluck(radioOptions, 'value')
     autoform:
       type: "select-radio"
       options: ->
