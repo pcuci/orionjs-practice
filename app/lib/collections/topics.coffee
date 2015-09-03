@@ -12,9 +12,6 @@
 ,
   value: "opt4"
   label: "Great!\ndfa gad df ad mand sf\nad mand sf ad small"
-,
-  value: "opt5"
-  label: "Greatest"
 ]
 
 Topics.attachSchema new SimpleSchema(

@@ -158,10 +158,10 @@ $answer-total-width: 80%;
 
   // Hide all options except the first
   p {
-    // Hide materialize radio button (:before/:after implementation)
+    // Hide materialize radio button (::before/::after implementation)
     // Later used as chat tail for first option
-    [type="radio"]:not(:checked) + label:before,
-    [type="radio"]:checked + label:after
+    [type="radio"]:not(:checked) + label::before,
+    [type="radio"]:checked + label::after
     {
       display: none;
     }
@@ -230,7 +230,7 @@ $answer-total-width: 80%;
       }
 
       // Show bubbles to indicate next available options
-      [type="radio"]:not(:checked) + label:before {
+      [type="radio"]:not(:checked) + label::before {
         display: block;
         margin-left: 50%;
         top: 10px;
@@ -297,6 +297,12 @@ $answer-total-width: 80%;
           [type="radio"]:not(:checked) + label {
             border-radius: 0;
             @extend .active-option;
+            &::before {
+              display: none;
+            }
+            &::after {
+              display: none;
+            }
           }
         }
       }
