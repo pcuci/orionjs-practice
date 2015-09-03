@@ -2,16 +2,19 @@
 
 @radioOptions = [
   value: "opt1"
-  label: "opt1 whoaos\ndt1 whoaos dt1 whoaos dfa"
+  label: "Bit Good\ndt1 whoaos dt1 whoaos dfa"
 ,
   value: "opt2"
-  label: "opt2"
+  label: "Fairly Good"
 ,
   value: "opt3"
-  label: "opt3fgfdsgsonelogword\nand sf ad"
+  label: "Betterthanaveragealways\nand sf ad"
 ,
   value: "opt4"
-  label: "opt4sad\ndfa gad df ad mand sf\nad mand sf ad small"
+  label: "Great!\ndfa gad df ad mand sf\nad mand sf ad small"
+,
+  value: "opt5"
+  label: "Greatest"
 ]
 
 Topics.attachSchema new SimpleSchema(
@@ -39,7 +42,7 @@ Topics.attachSchema new SimpleSchema(
       type: "text"
   feelingGood:
     type: String
-    label: "Good"
+    label: "Good\nor great\nor fantastic"
     allowedValues: _.pluck(radioOptions, 'value')
     optional: true
     autoform:

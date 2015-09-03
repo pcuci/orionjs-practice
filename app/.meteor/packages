@@ -13,15 +13,15 @@ iron:router
 accounts-ui
 accounts-password
 
-aldeed:autoform
-aldeed:collection2
+aldeed:autoform@5.5.0
+aldeed:collection2@2.5.0
 #twbs:bootstrap
 poetic:materialize-scss
 
 #aldeed:tabular
 nicolaslopezj:tabular-materialize
 
-gildaspk:autoform-materialize
+gildaspk:autoform-materialize@0.0.24
 
 natestrauser:font-awesome
 aldeed:delete-button

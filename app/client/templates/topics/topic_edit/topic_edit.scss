@@ -133,8 +133,8 @@ $option-inactive-background-color: #E9EEEF;
 }
 
 .hide-text {
-  text-indent: -9999px;
-  white-space: nowrap;
+  //text-indent: -9999px;
+  //white-space: nowrap;
 }
 
 $option-highlight: $option-background-color;
@@ -172,14 +172,44 @@ $answer-total-width: 80%;
       }
     }
 
-    // Style first option as a grey box
-    &:first-child {
-      [type="radio"]:not(:checked) + label {
-        border-radius: 20px;
-        background-color: $option-inactive-background-color;
-        border: 2px solid $option-inactive-background-color;
-        &:hover {
-          border-color: $option-inactive-highlight;
+    // First gray box, nothing active
+    &.fieldLabel label {
+      display: inline-block;
+      padding: 12px 20px 6px;
+      height: 45px;
+      width: auto;
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      vertical-align: middle;
+      cursor: pointer;
+      line-height: 1rem;
+      font-size: 1rem;
+      overflow: visible;
+
+      -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+      -moz-user-select: none; /* mozilla browsers */
+      -khtml-user-select: none; /* webkit (konqueror) browsers */
+      -ms-user-select: none; /* IE10+ */
+
+      cursor: pointer;
+      border-radius: 20px;
+      background-color: $option-inactive-background-color;
+      border: 2px solid $option-inactive-background-color;
+      &:hover {
+        border-color: $option-inactive-highlight;
+      }
+      span {
+        display: block;
+        &.firstLine {
+          font-weight: bold;
+        }
+        &.firstSubLine,
+        &.secondSubLine {
+          font-size: 0.7rem;
+          font-height: 0.7rem;
         }
       }
     }
@@ -187,6 +217,18 @@ $answer-total-width: 80%;
 
   &.active {
     p {
+      span {
+        display: block;
+        &.firstLine {
+          font-weight: bold;
+        }
+        &.firstSubLine,
+        &.secondSubLine {
+          font-size: 0.7rem;
+          font-height: 0.7rem;
+        }
+      }
+
       // Show bubbles to indicate next available options
       [type="radio"]:not(:checked) + label:before {
         display: block;
