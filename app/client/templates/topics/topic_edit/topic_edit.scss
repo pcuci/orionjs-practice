@@ -133,8 +133,8 @@ $option-inactive-background-color: #E9EEEF;
 }
 
 .hide-text {
-  //text-indent: -9999px;
-  //white-space: nowrap;
+  text-indent: -9999px;
+  white-space: nowrap;
 }
 
 $option-highlight: $option-background-color;
@@ -260,21 +260,20 @@ $answer-total-width: 80%;
       // Style with top/bottom-right rounded corners if checked
       &:not(:first-child) {
         [type="radio"]:checked + label {
-          direction: rtl;
           text-align: left;
           border-radius: 0;
           @include top-right-radius(20px);
           @include bottom-right-radius(20px);
           @extend .active-option;
         }
-      }
-
-      // Everything to the left of checked option has this class
-      &.higherSelected {
         // Hide text of labels to the left of checked option
         label {
           @extend .hide-text;
         }
+      }
+
+      // Everything to the left of checked option has this class
+      &.higherSelected {
         // First option is active, with top/bottom-left rounded corners
         &:first-child {
           [type="radio"]:not(:checked) + label {
