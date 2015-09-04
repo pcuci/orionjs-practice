@@ -146,9 +146,17 @@ $answer-total-width: 80%;
   background-color: $option-background-color;
 }
 
+#topicEditForm {
+  .form-group {
+    margin: 10px 0 0 0;
+    & > label {
+      display: none;
+    }
+  }
+}
+
 .af-uncheck-radio-group {
   // Style unchecked radios first, i.e.: element is not .active
-
   width: $answer-total-width;
 
   // Hide radio group label
@@ -158,6 +166,7 @@ $answer-total-width: 80%;
 
   // Hide all options except the first
   p {
+    margin: 0;
     // Hide materialize radio button (::before/::after implementation)
     // Later used as chat tail for first option
     [type="radio"]:not(:checked) + label::before,
@@ -172,44 +181,56 @@ $answer-total-width: 80%;
       }
     }
 
+    &:first-child {
+      flex: 0 0 50%;
+    }
+
     // First gray box, nothing active
-    &.fieldLabel label {
-      display: inline-block;
-      padding: 12px 20px 6px;
-      height: 45px;
-      width: auto;
-      position: relative;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      vertical-align: middle;
-      cursor: pointer;
-      line-height: 1rem;
-      font-size: 1rem;
-      overflow: visible;
+    &.fieldLabel {
+      label {
+        display: inline-block;
+        //padding: 12px 20px 6px;
+        padding: 0;
+        height: 45px;
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        vertical-align: middle;
+        cursor: pointer;
+        line-height: 1rem;
+        font-size: 1rem;
+        overflow: visible;
 
-      -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-      -moz-user-select: none; /* mozilla browsers */
-      -khtml-user-select: none; /* webkit (konqueror) browsers */
-      -ms-user-select: none; /* IE10+ */
+        -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+        -moz-user-select: none; /* mozilla browsers */
+        -khtml-user-select: none; /* webkit (konqueror) browsers */
+        -ms-user-select: none; /* IE10+ */
 
-      cursor: pointer;
-      border-radius: 20px;
-      background-color: $option-inactive-background-color;
-      border: 2px solid $option-inactive-background-color;
-      &:hover {
-        border-color: $option-inactive-highlight;
-      }
-      span {
-        display: block;
-        &.firstLine {
-          font-weight: bold;
+        cursor: pointer;
+        border-radius: 20px;
+        background-color: $option-inactive-background-color;
+        border: 2px solid $option-inactive-background-color;
+        &:hover {
+          border-color: $option-inactive-highlight;
         }
-        &.firstSubLine,
-        &.secondSubLine {
-          font-size: 0.7rem;
-          font-height: 0.7rem;
+        span.itemLabel {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          span {
+            flex: 1 0 auto;
+            &.firstLine {
+              font-weight: bold;
+            }
+            &.firstSubLine,
+            &.secondSubLine {
+              font-size: 0.7rem;
+              line-height: 0.7rem;
+            }
+          }
         }
       }
     }
@@ -217,15 +238,25 @@ $answer-total-width: 80%;
 
   &.active {
     p {
-      span {
-        display: block;
-        &.firstLine {
-          font-weight: bold;
-        }
-        &.firstSubLine,
-        &.secondSubLine {
-          font-size: 0.7rem;
-          font-height: 0.7rem;
+      //padding: 12px 20px 6px;
+      height: 60px;
+      padding: 0;
+      .itemLabel {
+        height: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        justify-content: space-around;
+        span {
+          display: block;
+          &.firstLine {
+            font-weight: bold;
+          }
+          &.firstSubLine,
+          &.secondSubLine {
+            font-size: 0.7rem;
+            line-height: 0.7rem;
+          }
         }
       }
 

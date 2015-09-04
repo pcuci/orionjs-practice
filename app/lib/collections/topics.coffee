@@ -14,6 +14,26 @@
   label: "Great!\ndfa gad df ad mand sf\nad mand sf ad small"
 ]
 
+@radioOptionsIrritable = [
+  value: "opt1"
+  label: "Irritable\ndt1 whoaos dt1 whoaos dfa"
+,
+  value: "opt2"
+  label: "Fairly Irratable"
+,
+  value: "opt3"
+  label: "Wow Irrated\nand sf ad"
+,
+  value: "opt4"
+  label: "Irritating!\ndfa gad df ad mand sf\nad mand sf ad small"
+,
+  value: "opt5"
+  label: "Infuriating\ndfa gad df ad mand sf\nad mand sf ad small"
+,
+  value: "opt6"
+  label: "Blown away\ndfa gad df ad mand sf\nad mand sf ad small"
+]
+
 Topics.attachSchema new SimpleSchema(
   name:
     type: String
@@ -59,6 +79,19 @@ Topics.attachSchema new SimpleSchema(
       type: "select-uncheckable-radio"
       options: ->
         _.map radioOptions, (option) ->
+          {
+            label: option.label
+            value: option.value
+          }
+  feelingIrritated:
+    type: String
+    label: "Irritated"
+    allowedValues: _.pluck(radioOptionsIrritable, 'value')
+    optional: true
+    autoform:
+      type: "select-uncheckable-radio"
+      options: ->
+        _.map radioOptionsIrritable, (option) ->
           {
             label: option.label
             value: option.value
