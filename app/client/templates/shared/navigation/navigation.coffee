@@ -1,28 +1,21 @@
 # Navigation: Event Handlers
 Template.Navigation.events {
-  'click #at-nav-button': (event) ->
+  'click #sign-in-out-button': (event) ->
+    event.preventDefault()
     if Meteor.user()
       AccountsTemplates.logout()
     else
-      Router.go 'login'
+      Router.go '/admin/login' + "?ref=%2F"
     return
 }
 
 # Navigation: Helpers
 Template.Navigation.helpers {
+  currentUserState: ->
+    key = (if Meteor.userId() then AccountsTemplates.texts.navSignOut else AccountsTemplates.texts.navSignIn)
+    T9n.get key, markIfMissing = false
   active: (path) ->
     (if Router.current().url is path then "active" else "")
-  environment: ->
-    if (process and process.env and (process.env.NODE_ENV isnt "production"))
-      process.env.NODE_ENV + " v" + if Meteor.settings? and Meteor.settings.public? and Meteor.settings.public.appVersion? then Meteor.settings.public.appVersion else "*.*.*"
-  envBackground: ->
-    if (process and process.env and (process.env.NODE_ENV isnt "production"))
-      switch process.env.NODE_ENV
-        when 'test' then "env-test";
-        when 'staging' then "env-staging"
-        else "env-development"
-    else
-      ""
 }
 
 # Navigation: Lifecycle Hooks

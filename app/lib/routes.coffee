@@ -9,8 +9,7 @@ Router.onBeforeAction (->
   else
     @next()
 ),
-  only: [
-  ]
+  only: ['topicNew', 'topicEdit']
 
 Router.route '/',
   name: 'home'

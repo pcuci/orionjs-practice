@@ -2,7 +2,7 @@
   <nav>
     <div class="nav-wrapper container">
       <a href="#" class="brand-logo">
-        AutoForm Practice
+        OrionJS Practice
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li class="{{active '/'}}">
@@ -15,7 +15,9 @@
             Topics
           {{/linkTo}}
         </li>
-        {{> loginButtons}}
+        <li>
+          <a id="sign-in-out-button" href="#">{{currentUserState}}</a>
+        </li>
       </ul>
       <ul id="slide-out" class="side-nav">
         <li class="{{active '/'}}">
@@ -28,7 +30,9 @@
             Topics
           {{/linkTo}}
         </li>
-        {{> loginButtons}}
+        <li>
+          <a id="sign-in-out-button" href="#">{{currentUserState}}</a>
+        </li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>

@@ -38,64 +38,6 @@ Topics.attachSchema new SimpleSchema(
   name:
     type: String
     label: "Name"
-  importance:
-    type: Number
-    label: "Importance"
-    autoform:
-      type: "range"
-      min: 0
-      max: 100
-  stars:
-    type: String
-    label: "Stars"
-    autoform:
-      type: "range"
-      min: 0
-      max: 1
-  tags:
-    type: [String]
-    label: "Tags"
-    autoform:
-      type: "text"
-  feelingGood:
-    type: String
-    label: "Good\nor great\nor fantastic"
-    allowedValues: _.pluck(radioOptions, 'value')
-    optional: true
-    autoform:
-      type: "select-uncheckable-radio"
-      options: ->
-        _.map radioOptions, (option) ->
-          {
-            label: option.label
-            value: option.value
-          }
-  feelingAnxious:
-    type: String
-    label: "Anxious"
-    allowedValues: _.pluck(radioOptions, 'value')
-    optional: true
-    autoform:
-      type: "select-uncheckable-radio"
-      options: ->
-        _.map radioOptions, (option) ->
-          {
-            label: option.label
-            value: option.value
-          }
-  feelingIrritated:
-    type: String
-    label: "Irritated"
-    allowedValues: _.pluck(radioOptionsIrritable, 'value')
-    optional: true
-    autoform:
-      type: "select-uncheckable-radio"
-      options: ->
-        _.map radioOptionsIrritable, (option) ->
-          {
-            label: option.label
-            value: option.value
-          }
   created:
     type: Date
     label: "Created At"

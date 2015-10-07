@@ -1,19 +1,6 @@
-// You can override colors BEFORE materialize.scss:
-$primary-color: blue;
+// If you want to override materialize sass variables you can uncomment the following:
+@import "{poetic:materialize-scss}/bower_components/materialize/sass/components/_color.scss";
+//$primary-color: color("blue", "lighten-2");
 
-// You can NOT use materialize color mixins since they are not imported yet.
-// WRONG! $primary-color: color("materialize-red", "lighten-2");
-
-// @import "your-awesome-color-varialbes.scss"
-@import ".meteor/local/build/programs/server/assets/packages/poetic_materialize-scss/bower_components/materialize/sass/materialize.scss";
-
-@import "client/stylesheets/uncheck-radios.scss";
-
-@import "client/templates/home/home.scss";
-@import "client/templates/topics/topics.scss";
-
-@import "client/templates/shared/access_denied/access_denied.scss";
-@import "client/templates/shared/navigation/navigation.scss";
-@import "client/templates/topics/topic_new/topic_new.scss";
-@import "client/templates/topics/topic_show/topic_show.scss";
-@import "client/templates/topics/topic_edit/topic_edit.scss";
+// import main scss file
+@import "{poetic:materialize-scss}/bower_components/materialize/sass/materialize.scss";

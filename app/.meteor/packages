@@ -4,27 +4,37 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+
 mquandalle:jade
 coffeescript
 fourseven:scss
+
 iron:router
 
-accounts-ui
-accounts-password
-
-aldeed:autoform@5.5.0
-aldeed:collection2@2.5.0
-#twbs:bootstrap
+orionjs:core
+orionjs:summernote
+orionjs:materialize
 poetic:materialize-scss
-
-#aldeed:tabular
 nicolaslopezj:tabular-materialize
+gildaspk:autoform-materialize
 
-gildaspk:autoform-materialize@0.0.24
+aldeed:autoform
+aldeed:collection2
+aldeed:delete-button
 
 natestrauser:font-awesome
-aldeed:delete-button
 momentjs:moment
-aldeed:template-extension
-pcuci:autoform-select-uncheckable-radio-aminy2
