@@ -38,3 +38,32 @@ aldeed:delete-button
 
 natestrauser:font-awesome
 momentjs:moment
+
+# TODO: remove packages bellow - not used
+
+d3
+
+meteorhacks:inject-initial
+meteorhacks:fast-render
+meteorhacks:kadira
+meteorhacks:kadira-profiler
+
+dburles:collection-helpers
+reywood:publish-composite
+tmeasday:publish-counts
+okgrow:promise
+
+pfafman:materialize-modal
+
+risul:moment-timezone
+wylio:mandrill
+okgrow:analytics
+
+pcuci:autoform-select-uncheckable-radio-aminy2
+reactive-dict
+reactive-var
+mizzao:user-status
+pcuci:autoform-uncheckable-range
+matb33:collection-hooks
+fortawesome:fontawesome
+miro:mailchimp
