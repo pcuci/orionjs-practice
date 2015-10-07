@@ -1,5 +1,3 @@
-Template.registerHelper "TabularTables", TabularTables
-
 AutoForm.addHooks null,
   onError: (name, error, template) ->
     console.error name + " error:", error

@@ -1,61 +1,29 @@
-@Topics = new Mongo.Collection('topics')
-
-@radioOptions = [
-  value: "opt1"
-  label: "Bit Good\ndt1 whoaos dt1 whoaos dfa"
-,
-  value: "opt2"
-  label: "Fairly Good"
-,
-  value: "opt3"
-  label: "Betterthanaveragealways\nand sf ad"
-,
-  value: "opt4"
-  label: "Great!\ndfa gad df ad mand sf\nad mand sf ad small"
-]
-
-@radioOptionsIrritable = [
-  value: "opt1"
-  label: "Irritable\ndt1 whoaos dt1 whoaos dfa"
-,
-  value: "opt2"
-  label: "Fairly Irratable"
-,
-  value: "opt3"
-  label: "Wow Irrated\nand sf ad"
-,
-  value: "opt4"
-  label: "Irritating!\ndfa gad df ad mand sf\nad mand sf ad small"
-,
-  value: "opt5"
-  label: "Infuriating\ndfa gad df ad mand sf\nad mand sf ad small"
-,
-  value: "opt6"
-  label: "Blown away\ndfa gad df ad mand sf\nad mand sf ad small"
-]
+@Topics = new orion.collection('topics',
+  singularName: "topic"
+  pluralName: "topics"
+  title: "Topics"
+  link:
+    title: "Topics"
+  tabular:
+    columns: [
+      data: "name"
+      title: "Name"
+    ,
+      orion.attributeColumn("updatedAt", "updated", "Updated")
+    ,
+      orion.attributeColumn("createdAt", "created", "Created")
+    ,
+      orion.attributeColumn("createdBy", "authorsId", "Author ID")
+    ]
+)
 
 Topics.attachSchema new SimpleSchema(
   name:
     type: String
     label: "Name"
-  created:
-    type: Date
-    label: "Created At"
-    autoValue: ->
-      if @isInsert
-        new Date
-      else if @isUpsert
-        $setOnInsert: new Date
-      else
-        @unset()
-  updated:
-    type: Date
-    label: "Updated At"
-    autoValue: ->
-      new Date()
-  authorId:
-    type: String
-    regEx: SimpleSchema.RegEx.Id
+  created: orion.attribute('createdAt')
+  updated: orion.attribute('updatedAt')
+  authorId: orion.attribute('createdBy')
 )
 
 if Meteor.isServer
@@ -66,7 +34,6 @@ if Meteor.isServer
       true
     remove: (userId, doc) ->
       true
-
   Topics.deny
     insert: (userId, doc) ->
       false
